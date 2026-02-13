@@ -1,0 +1,10 @@
+mongoose
+express
+dotenv
+nodemon
+prettier
+
+npm i -D nodemon
+npm i -D prettier
+
+npm install mongoose express dotnet

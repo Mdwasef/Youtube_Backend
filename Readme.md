@@ -18,3 +18,6 @@ npm install --save-dev nodemon   -> used to save file nd run files automatically
 prettier package is used to manage code formating 
  npm i -D  prettier
  After installing prettier package we have to insert some files manually ...
+
+
+ During writing password of mongodb db if password contains @ then write %40 at the place of @
