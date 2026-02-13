@@ -21,3 +21,7 @@ prettier package is used to manage code formating
 
 
  During writing password of mongodb db if password contains @ then write %40 at the place of @
+
+ req.params
+ req.body
+ req.cookies
