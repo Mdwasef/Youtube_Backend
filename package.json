@@ -1,0 +1,16 @@
+{
+  "name": "mega_backend_project",
+  "version": "1.0.0",
+  "description": "mega project",
+  "keywords": [
+    "javascript",
+    "backend"
+  ],
+  "license": "ISC",
+  "author": "Wasef",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
