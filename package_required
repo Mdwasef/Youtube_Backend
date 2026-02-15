@@ -7,4 +7,6 @@ prettier
 npm i -D nodemon
 npm i -D prettier
 
-npm install mongoose express dotnet
+npm install mongoose express dotenv
+
+npm install cookie-parser cors

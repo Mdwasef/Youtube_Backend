@@ -11,6 +11,7 @@ npm install --save-dev nodemon   -> used to save file nd run files automatically
   Inside src create folders using 
    mkdir controllers, db, middlewares, models, routes, utils
 
+
 1. db folder is used to config the database connection
 2. utils folder is used to create utilities like email sending, message sending utilities.
 
@@ -25,3 +26,6 @@ prettier package is used to manage code formating
  req.params
  req.body
  req.cookies
+ cookie-parser
+ cors
+ middleware
