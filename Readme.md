@@ -29,3 +29,15 @@ prettier package is used to manage code formating
  cookie-parser
  cors
  middleware
+
+
+ mongoose_package:-> mongoose-aggregate-paginate-v2 -> used to write aggrigation qureies....
+
+
+ 🧠 What is bcrypt?
+
+bcrypt is a library that:
+
+👉 Converts password into hashed string
+👉 Adds salt automatically
+👉 Makes passwords hard to crack

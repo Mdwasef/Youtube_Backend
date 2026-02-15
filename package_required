@@ -10,3 +10,10 @@ npm i -D prettier
 npm install mongoose express dotenv
 
 npm install cookie-parser cors
+
+
+npm install mongoose-aggregate-paginate-v2
+
+npm install bcrypt
+npm install bcryptjs
+npm install jsonwebtoken
