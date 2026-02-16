@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
-
 import jwt from 'jsonwebtoken';
 
 import bcrypt from 'bcrypt';
+
 
 
 let userSchema= new mongoose.Schema({
@@ -62,25 +62,46 @@ refreshToken:{
 //
 
 
-userSchema.pre("save", async function (err,req,res,next){
+// userSchema.pre("save", async function (next){
 
 
-    // it checks if the password field is modifed or not .. if not modified then return to next().. if not then modify the password field 
+//     // it checks if the password field is modifed or not .. if not modified then return to next().. if not then modify the password field 
     
-if(!this.isModified("password")) return next();
+// if(!this.isModified("password")) return next();
 
-    this.password=bcrypt.hash(this.password,10);
-    next()
+//     this.password=bcrypt.hash(this.password,10);
+//     next()
+// })
+
+userSchema.pre("save",async function (next) {
+
+    // check if password is modified or not
+
+    if (!this.isModified("password")) return next()
+    
+     this.password=await bcrypt.hash(this.password,10);
+     next();   
 })
+
+
 
 // method injects 
 
 
 // used to check if password correct or not .. bcrypt can able to check if correct or not 
 
-userSchema.methods.isPasswordCorrect=async function(password) {
-   return await bcrypt.compare(password, this.password); // return true or false
+
+
+// userSchema.methods.isPasswordCorrect=async function(password) {
+//    return await bcrypt.compare(password, this.password); // return true or false
+// }
+
+// used to check if password correct or not 
+
+userSchema.methods.isPasswordCorrect= async function(password){
+    return await bcrypt.compare(password,this.password)
 }
+
 
 userSchema.methods.generateAccessToken=function(){
   return  jwt.sign(
@@ -96,14 +117,60 @@ userSchema.methods.generateAccessToken=function(){
     )
 }
 
-userSchema.methods.generateRefreshToken=function(){
-return jwt.sign({
-    _id:this._id
-},
-process.env.REFRESH_TOKEN,
+
+// userSchema.methods.generateAccessToken=function(){
+//     return jwt.sign(
+       
+//         //payload->informations
+
+//         {
+//             _id:this._id,
+//             email:this.email,
+//             username:this.username,
+//             fullname:this.fullname
+//         }, 
+
+//         //secret key
+//         process.env.ACCESS_TOKEN_SECRET
+//         ,
+
+//         // others-> expiry,algorithm 
+//         {
+//         expiresIn: process.env.ACCESS_TOKEN_SECRET 
+//         }
+       
+//     )
+// }
+
+
+// userSchema.methods.generateRefreshToken=function(){
+// return jwt.sign({
+//     _id:this._id
+// },
+// process.env.REFRESH_TOKEN,
+// {
+//     expiresIn: process.env.REFRESH_TOKEN_EXPIRY
+// }
+// )
+// }
+
+userSchema.methods.generateRefreshToken= function(){
+    return jwt.sign(
+        
+        //payload
+        
+        {
+            _id:this._id
+    },
+
+// secret refresh token
+
+    process.env.REFRESH_TOKEN_SECRET
+,
 {
-    expiresIn: process.env.REFRESH_TOKEN_EXPIRY
+expiresIn:process.env.REFRESH_TOKEN_EXPIRY
 }
+
 )
 }
 
