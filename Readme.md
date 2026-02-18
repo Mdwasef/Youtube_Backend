@@ -41,3 +41,8 @@ bcrypt is a library that:
 👉 Converts password into hashed string
 👉 Adds salt automatically
 👉 Makes passwords hard to crack
+
+
+To upload files like videos, img we use coludinary to get 3rd party link 
+
+To upload we have options like fileUpload , multer

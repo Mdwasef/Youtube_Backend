@@ -17,3 +17,7 @@ npm install mongoose-aggregate-paginate-v2
 npm install bcrypt
 npm install bcryptjs
 npm install jsonwebtoken
+
+
+npm install cloudinary
+npm install multer
