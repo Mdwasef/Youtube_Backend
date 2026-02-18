@@ -7,6 +7,11 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 const registerUser= async_Handler(
     async (req,res)=>{
+
+        console.log("HEADERS =>", req.headers["content-type"]);
+        console.log("FILES =>", req.files);
+        console.log("BODY =>", req.body);
+
   
         // get user details from frontend 
         // validation (if they sent all details correctly or not, empty or not)
@@ -38,7 +43,7 @@ const registerUser= async_Handler(
 
         // if user already exists or not 
 
-     const existedUser = User.findOne({
+     const existedUser =await User.findOne({
         $or:[
             {username},{email}
         ]

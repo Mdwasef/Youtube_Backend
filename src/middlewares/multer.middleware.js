@@ -1,15 +1,20 @@
 import multer from "multer";
 
 const storage= multer.diskStorage({
-    destination: function(req,file,callback){
-        callback(null,'./public/temp')
+    destination: function(req,file,cb){
+
+          console.log("INSIDE DESTINATION, FILE =>", file);
+
+        cb(null,'./public/temp')
     },
 
-    filename: function (req,file,callback){
+    filename: function (req,file,cb){
 
         // const uniqueSuffix= Date.now()+'-'+Math.round(Math.random()*1E9);
 
-        callback(null,file.originalname)
+        console.log("INSIDE FILENAME, FILE =>", file.originalname);
+
+        cb(null,file.originalname)
 
     }
 })
